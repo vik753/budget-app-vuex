@@ -29,7 +29,9 @@
       <span>Do you really want to delete this item?</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="danger" @click="deleteItemHandler">Delete item</el-button>
+        <el-button type="danger" @click="deleteItemHandler"
+          >Delete item</el-button
+        >
       </span>
     </el-dialog>
   </div>

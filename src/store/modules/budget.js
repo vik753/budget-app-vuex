@@ -1,4 +1,4 @@
-// import Vue from 'vue';
+import uuidv4 from '../../plugins/uuid';
 
 const budgetStore = {
   namespaced: true,
@@ -25,12 +25,26 @@ const budgetStore = {
     DELETE_ITEM(state, newList) {
       state.list = { ...newList };
     },
+    ADD_ITEM(state, newItem) {
+      state.list = {
+        ...state.list,
+        [newItem.id]: newItem,
+      };
+    },
   },
   actions: {
     deleteItem({ state, commit }, itemId) {
       delete state.list[itemId];
       const newList = { ...state.list };
       commit('DELETE_ITEM', newList);
+    },
+    addItem({ commit }, newItem) {
+      const id = uuidv4();
+      const newItemWithId = {
+        ...newItem,
+        id: String([id]),
+      };
+      commit('ADD_ITEM', newItemWithId);
     },
   },
 };
